@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goapp
+  namespace: my-namespace
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      name: goapp
+  template:
+    metadata:
+      labels:
+        name: goapp
+    spec:
+      containers:
+      - name: application
+        image: devops/goapp:1.0.0
+        imagePullPolicy: IfNotPresent
+        ports:
+          - containerPort: 3000
